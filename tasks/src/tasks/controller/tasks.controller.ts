@@ -3,7 +3,7 @@ import TaskService from "../services/tasks.service";
 
 
 export default class TaskController {
-    constructor(private taskService: TaskService) { }
+    constructor(private taskService: TaskService) {}
 
     async create(req: Request, res: Response) {
         const task = await this.taskService.create(req.body);
