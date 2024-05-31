@@ -1,6 +1,5 @@
-import { Sequelize, DataTypes, Model } from "sequelize";
-
-const sequelize = new Sequelize("postgres://postgres:postgres@localhost:5432/tasks_api");
+import { DataTypes, Model } from "sequelize";
+import { sequelize } from "../db/db.config";
 
 class Task extends Model {}
 
@@ -37,4 +36,4 @@ Task.init(
     }
 )
 
-export { sequelize, Task };
+export { Task };

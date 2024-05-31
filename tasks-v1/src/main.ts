@@ -1,5 +1,6 @@
 import express, { Request, Response } from 'express';
-import { sequelize, Task } from './tasks/model/tasks.model';
+import { Task } from './tasks/model/tasks.model';
+import { sequelize } from './tasks/db/db.config';
 import bodyParser from 'body-parser';
 
 const app = express();
