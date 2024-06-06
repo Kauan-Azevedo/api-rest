@@ -10,6 +10,15 @@ Task.init(
             autoIncrement: true,
             primaryKey: true,
         },
+        title: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            validate: {
+                notEmpty: true,
+                min: 5,
+                max: 32
+            }
+        },
         description: {
             type: DataTypes.TEXT,
             allowNull: false,
@@ -17,11 +26,6 @@ Task.init(
                 notEmpty: true,
                 min: 5,
             }
-        },
-        date: {
-            type: DataTypes.DATEONLY,
-            allowNull: false,
-            defaultValue: DataTypes.NOW
         },
         done: {
             type: DataTypes.BOOLEAN,

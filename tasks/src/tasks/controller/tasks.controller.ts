@@ -1,7 +1,5 @@
 import { Request, Response } from "express";
 import TaskService from "../services/tasks.service";
-
-
 export default class TaskController {
     constructor(private taskService: TaskService) {}
 
@@ -25,7 +23,7 @@ export default class TaskController {
         try {
             const { id } = req.params;
             const task = await this.taskService.getById(Number(id));
-    
+
             return res.status(200).json(task);
         } catch (error: any) {
             return res.status(500).json({ message: error.message });
@@ -54,3 +52,4 @@ export default class TaskController {
         }
     }
 }
+
