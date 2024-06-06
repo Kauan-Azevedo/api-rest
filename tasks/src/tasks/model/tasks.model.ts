@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import { sequelize } from "../db/db.config";
+import { sequelize } from "../../db/db.config";
 
 class Task extends Model {}
 
