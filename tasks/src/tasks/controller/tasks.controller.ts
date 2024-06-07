@@ -46,9 +46,22 @@ export default class TaskController {
             const { id } = req.params;
             await this.taskService.delete(Number(id));
     
-            return res.status(204).send();
+            return res.status(204).json();
         } catch (error: any) {
             return res.status(500).json({ message: error.message })
+        }
+    }
+
+    async restoreById(req: Request, res: Response) {
+        try {
+            const { id } = req.params;
+            await this.taskService.restore(Number(id));
+
+            return res.status(200).json();
+        } catch (error: any) {
+            return res.status(500).json({
+                message: error.message
+            })
         }
     }
 }

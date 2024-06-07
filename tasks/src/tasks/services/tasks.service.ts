@@ -20,4 +20,8 @@ export default class TaskService {
     delete(id: number) {
         return Task.destroy({ where: { id } });
     }
+
+    restore(id: number) {
+        return Task.restore({ where: { id } });
+    }
 }
