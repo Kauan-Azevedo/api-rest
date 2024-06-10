@@ -6,11 +6,19 @@ export default class UserService {
     }
 
     getAll() {
-        return User.findAll();
+        return User.findAll({
+            attributes: { 
+                exclude: ['password', "deletedAt"],
+            }
+        });
     }
 
     getById(id: number) {
-        return User.findByPk(id, {include: {  }});
+        return User.findByPk(id, {
+            attributes: {
+                exclude: ['password'],
+            }
+        });
     }
 
     update(id: number, task: Omit<string, any>) {
