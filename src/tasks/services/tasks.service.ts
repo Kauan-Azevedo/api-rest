@@ -13,6 +13,10 @@ export default class TaskService {
         return Task.findByPk(id);
     }
 
+    getByAssignedUser(id: number) {
+        return Task.findAll({ include: Task})
+    }
+
     update(id: number, task: Omit<string, any>) {
         return Task.update(task, { where: { id } });
     }

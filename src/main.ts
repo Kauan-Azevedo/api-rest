@@ -32,6 +32,7 @@ app.get('/', (req: Request, res: Response) => {
 app.get('/tasks', (req, res) => taskController.getAll(req, res));
 app.post('/tasks', (req, res) => taskController.create(req, res));
 app.post("/task/restore/:id", (req, res) => taskController.restoreById(req, res));
+app.post("/task/assigned/:id", (req, res) => taskController.GetByAssingedUser(req, res));
 app.get('/tasks/:id', (req, res) => taskController.getById(req, res));
 app.put('/tasks/:id', (req, res) => taskController.update(req, res));
 app.delete('/tasks/:id', (req, res) => taskController.delete(req, res));
