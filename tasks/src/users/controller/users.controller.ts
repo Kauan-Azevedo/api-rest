@@ -1,13 +1,32 @@
 import { Request, Response } from "express";
 import UserService from "../services/users.service";
+import bcrypt from "bcrypt";
 
 export default class UserController {
     constructor(private userService: UserService) {}
 
     async create(req: Request, res: Response) {
-        const user = await this.userService.create(req.body);
+        const { password } = req.body;
 
-        return res.status(201).json(user);
+        if (!password) {
+            return res.status(400).json({ message: "Password required" });
+        }
+
+        bcrypt.genSalt(Number(process.env.HASH_ROUND), (err, salt) => {
+                bcrypt.hash(password, salt, async (err, hash) => {
+                    if (err) {
+                        return res.status(500).json({ message: err.message });
+                    }
+
+                    req.body.password = hash;
+                    const user = await this.userService.create(req.body);
+
+                    return res.status(201).json(user);
+                })
+            })
+        // const user = await this.userService.create(req.body);
+
+        // return res.status(201).json(user);
     }
 
     async getAll(req: Request, res: Response) {

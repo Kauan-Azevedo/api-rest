@@ -16,7 +16,8 @@ User.init(
             validate: {
                 notEmpty: true,
                 min: 4,
-            }
+            },
+            unique: true
         },
         email: {
             type: DataTypes.TEXT,
@@ -24,7 +25,8 @@ User.init(
             validate: {
                 notEmpty: true,
                 min: 6,
-            }
+            },
+            unique: true
         },
         password: {
             type: DataTypes.STRING(256),
